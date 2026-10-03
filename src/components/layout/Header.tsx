@@ -226,12 +226,13 @@ export const Header: React.FC = () => {
             onClick={() => setActiveTab('home')}
             className="flex items-center gap-3 cursor-pointer group shrink-0"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-700 to-brand-900 text-white flex items-center justify-center shadow-md shadow-brand-700/20 group-hover:scale-105 transition-transform relative overflow-hidden shrink-0">
-              {/* Ashoka/Chakra Motif */}
-              <div className="w-6 h-6 rounded-full border border-saffron-400/80 flex items-center justify-center">
-                <div className="w-2.5 h-2.5 rounded-full bg-saffron-400"></div>
-              </div>
-              <div className="absolute -bottom-1 left-0 right-0 h-1 bg-saffron-500"></div>
+            <div className="w-11 h-11 rounded-full bg-white border border-slate-200 shadow-xs flex items-center justify-center p-0.5 group-hover:scale-105 group-hover:shadow-md transition-all shrink-0 overflow-hidden">
+              <img 
+                src="/logo.png" 
+                alt="JanMitra Logo" 
+                className="w-full h-full object-contain rounded-full"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <div>
               <div className="flex items-baseline gap-1.5">

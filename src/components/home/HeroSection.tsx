@@ -312,9 +312,19 @@ export const HeroSection: React.FC<{ onSelectCategory: (category: CategoryKey) =
         
         {/* Hero Header */}
         <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-800 text-xs font-semibold mb-4 shadow-2xs">
-            <span className="w-2 h-2 rounded-full bg-saffron-500"></span>
-            <span>Government benefits and procedures, explained for humans</span>
+          <div className="flex flex-col items-center justify-center mb-4">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white p-1 shadow-md border border-slate-200/90 mb-3 hover:scale-105 transition-transform">
+              <img 
+                src="/logo.png" 
+                alt="JanMitra Logo" 
+                className="w-full h-full object-contain rounded-full"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-800 text-xs font-semibold shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-saffron-500"></span>
+              <span>Government benefits and procedures, explained for humans</span>
+            </div>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">

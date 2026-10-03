@@ -136,11 +136,16 @@ const MainAppContent: React.FC = () => {
           
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-brand-700 text-white flex items-center justify-center font-bold text-sm">
-                JM
+              <div className="w-10 h-10 rounded-full bg-white p-0.5 shadow-md flex items-center justify-center shrink-0 overflow-hidden">
+                <img 
+                  src="/logo.png" 
+                  alt="JanMitra Logo" 
+                  className="w-full h-full object-contain rounded-full"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <div>
-                <span className="font-bold text-white text-sm">JanMitra</span>
+                <span className="font-bold text-white text-base">JanMitra</span>
                 <span className="text-slate-400 text-xs ml-2">जनमित्र — Understand. Discover. Apply.</span>
               </div>
             </div>
