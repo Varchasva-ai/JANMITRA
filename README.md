@@ -20,7 +20,7 @@ Traditional government portals force citizens to already know the exact scheme n
 
 **JanMitra** fundamentally reverses this model:
 - Instead of asking: *"Which government scheme are you looking for?"*
-- JanMitra asks: **“What are you trying to do?”**
+- JanMitra asks: **“What are you trying to do?” **
 
 ```
 MY SITUATION
