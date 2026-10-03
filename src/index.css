@@ -6,21 +6,18 @@
   html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
-    overflow-x: hidden;
-    max-width: 100vw;
-    width: 100%;
+    -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
   }
   
   body {
     @apply bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans;
-    overflow-x: hidden;
-    max-width: 100vw;
+    overflow-x: clip;
     width: 100%;
   }
 
   #root {
-    overflow-x: hidden;
-    max-width: 100vw;
+    overflow-x: clip;
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -29,8 +26,8 @@
 
   /* Custom scrollbar for modern feel */
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
   }
   ::-webkit-scrollbar-track {
     background: #f1f5f9;
@@ -44,10 +41,9 @@
   }
 }
 
-/* Hindi typography adjustments */
+/* Hindi typography adjustments - preserve uniform line-height to prevent layout shifts */
 [lang="hi"], .font-devanagari {
-  font-family: 'Noto Sans Devanagari', 'Inter', system-ui, sans-serif;
-  line-height: 1.6;
+  font-family: 'Noto Sans Devanagari', 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 /* Pulsing audio wave animation for voice search simulation */

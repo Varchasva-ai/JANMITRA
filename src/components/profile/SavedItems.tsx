@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLanguage } from '../../context/LanguageContext';
+import { useLanguage, formatSchemeLevel } from '../../context/LanguageContext';
 import { useCitizen } from '../../context/CitizenContext';
 import { ALL_SCHEMES } from '../../data/schemes';
 import { ALL_SERVICES } from '../../data/services';
@@ -72,13 +72,13 @@ export const SavedItems: React.FC<SavedItemsProps> = ({ onOpenScheme, onOpenServ
               >
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-brand-700 block mb-1">
-                    {scheme.level}
+                    {formatSchemeLevel(scheme.level, language)}
                   </span>
                   <h4 className="text-sm font-bold text-slate-900">
                     {language === 'hi' ? scheme.nameHi : scheme.name}
                   </h4>
                   <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
-                    {scheme.shortDescription}
+                    {language === 'hi' ? scheme.shortDescriptionHi : scheme.shortDescription}
                   </p>
                 </div>
 

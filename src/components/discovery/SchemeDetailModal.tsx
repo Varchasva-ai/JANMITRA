@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { useLanguage } from '../../context/LanguageContext';
+import { useLanguage, formatSchemeLevel, formatCategory } from '../../context/LanguageContext';
 import { useCitizen } from '../../context/CitizenContext';
 import { Scheme } from '../../types';
 import { evaluateSchemeForUser } from '../../utils/matchingEngine';
@@ -73,19 +73,24 @@ export const SchemeDetailModal: React.FC<SchemeDetailModalProps> = ({
   const modalContent = (
     <div 
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-3 sm:p-6 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-slate-900/60 backdrop-blur-xs p-0 sm:p-6 overflow-y-auto"
     >
-      <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 my-auto">
+      <div className="bg-white rounded-t-3xl sm:rounded-3xl max-w-4xl w-full max-h-[92vh] sm:max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-6 sm:slide-in-from-bottom-0 sm:zoom-in-95 my-0 sm:my-auto">
         
+        {/* Mobile Drag Handle */}
+        <div className="sm:hidden pt-2.5 pb-1 bg-slate-900 flex justify-center">
+          <div className="w-10 h-1 bg-slate-600 rounded-full"></div>
+        </div>
+
         {/* Modal Top Header */}
-        <div className="p-5 sm:p-6 bg-slate-900 text-white flex items-start justify-between gap-4 border-b border-slate-800">
+        <div className="p-4 sm:p-6 bg-slate-900 text-white flex items-start justify-between gap-3 sm:gap-4 border-b border-slate-800">
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-2">
               <span className="px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-300 text-xs font-semibold uppercase tracking-wider">
-                {scheme.level}
+                {formatSchemeLevel(scheme.level, language)}
               </span>
               <span className="px-2.5 py-0.5 rounded-full bg-saffron-500/20 text-saffron-300 text-xs font-medium">
-                {scheme.category.toUpperCase()}
+                {formatCategory(scheme.category, language).toUpperCase()}
               </span>
             </div>
 

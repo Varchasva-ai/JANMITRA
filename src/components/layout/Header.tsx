@@ -198,14 +198,14 @@ export const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs w-full max-w-full">
-      {/* Top Government Disclaimer & Trust Bar */}
-      <div className="bg-slate-900 text-slate-200 py-1.5 text-xs border-b border-slate-800 w-full">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-wrap items-center justify-between gap-2">
+      {/* Top Government Disclaimer & Trust Bar (Fixed height to prevent language layout shifts) */}
+      <div className="hidden sm:block bg-slate-900 text-slate-200 h-8 border-b border-slate-800 w-full overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex items-center justify-between gap-2">
           <div className="flex items-center gap-2 flex-1 min-w-0">
             <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-semibold text-[10px] tracking-wide uppercase shrink-0">
               Notice
             </span>
-            <span className="text-slate-300 text-[11px] leading-normal">
+            <span className="text-slate-300 text-[11px] leading-normal truncate" title={t('disclaimer.text')}>
               {t('disclaimer.text')}
             </span>
           </div>
@@ -218,15 +218,15 @@ export const Header: React.FC = () => {
       </div>
 
       {/* Main Bar (Row 1: Brand Identity & Citizen Command Tools) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex items-center justify-between h-16 gap-3 min-w-0">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
+        <div className="flex items-center justify-between h-13 sm:h-16 gap-2 sm:gap-3 min-w-0">
           
           {/* Logo & Identity */}
           <div 
             onClick={() => setActiveTab('home')}
-            className="flex items-center gap-3 cursor-pointer group shrink-0"
+            className="flex items-center gap-2 sm:gap-3 cursor-pointer group shrink-0"
           >
-            <div className="w-11 h-11 rounded-full bg-white border border-slate-200 shadow-xs flex items-center justify-center p-0.5 group-hover:scale-105 group-hover:shadow-md transition-all shrink-0 overflow-hidden">
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white border border-slate-200 shadow-xs flex items-center justify-center p-0.5 group-hover:scale-105 group-hover:shadow-md transition-all shrink-0 overflow-hidden">
               <img 
                 src="/logo.png" 
                 alt="JanMitra Logo" 
@@ -236,30 +236,30 @@ export const Header: React.FC = () => {
             </div>
             <div>
               <div className="flex items-baseline gap-1.5">
-                <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-brand-700 transition-colors">
+                <span className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 group-hover:text-brand-700 transition-colors">
                   JanMitra
                 </span>
-                <span className="text-xs font-semibold px-1.5 py-0.2 rounded bg-brand-50 text-brand-700 border border-brand-200">
+                <span className="text-[10px] sm:text-xs font-semibold px-1 sm:px-1.5 py-0.2 rounded bg-brand-50 text-brand-700 border border-brand-200">
                   जनमित्र
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 font-medium leading-none">
+              <p className="hidden sm:block text-[11px] text-slate-500 font-medium leading-none">
                 {t('brand.tagline')}
               </p>
             </div>
           </div>
 
           {/* Right Action Tools: Search, Voice, Language, Full User Account & Login ID */}
-          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
             
             {/* Quick Global Search Trigger */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white text-slate-600 hover:text-slate-900 text-xs transition-all shadow-2xs"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white text-slate-600 hover:text-slate-900 text-xs transition-all shadow-2xs"
               title="Search benefits, services, documents"
             >
               <Search className="w-3.5 h-3.5 text-slate-400" />
-              <span>{t('action.search')}</span>
+              <span className="hidden sm:inline">{t('action.search')}</span>
               <kbd className="hidden lg:inline-block px-1.5 py-0.5 text-[10px] font-mono bg-white border border-slate-200 rounded text-slate-400">
                 /
               </kbd>
@@ -303,74 +303,64 @@ export const Header: React.FC = () => {
               )}
             </div>
 
-            {/* Language Toggle */}
+            {/* Language Toggle (Fixed button widths to prevent layout jitter) */}
             <div className="flex items-center bg-slate-100 rounded-xl p-0.5 border border-slate-200 text-xs font-semibold">
               <button
+                type="button"
                 onClick={() => setLanguage('en')}
-                className={`px-2 py-1 rounded-lg transition-all ${
+                className={`w-7 sm:w-8 py-1 rounded-lg text-center transition-all text-xs ${
                   language === 'en' 
-                    ? 'bg-white text-brand-800 shadow-xs' 
+                    ? 'bg-white text-brand-800 shadow-xs font-bold' 
                     : 'text-slate-500 hover:text-slate-800'
                 }`}
               >
                 EN
               </button>
               <button
+                type="button"
                 onClick={() => setLanguage('hi')}
-                className={`px-2 py-1 rounded-lg transition-all ${
+                className={`w-7 sm:w-8 py-1 rounded-lg text-center transition-all text-xs ${
                   language === 'hi' 
-                    ? 'bg-white text-brand-800 shadow-xs' 
+                    ? 'bg-white text-brand-800 shadow-xs font-bold' 
                     : 'text-slate-500 hover:text-slate-800'
                 }`}
               >
-                हिंदी
+                हिं
               </button>
             </div>
 
-            {/* Prominent User Account & Login ID Button (Completely Unclipped) */}
+            {/* User Account & Login ID Button (Optimized for Mobile) */}
             <button
               onClick={() => setAuthModalOpen(true)}
-              className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl border border-brand-200 bg-white hover:bg-brand-50 text-slate-800 transition-all cursor-pointer shadow-2xs shrink-0"
+              className="flex items-center gap-2 p-1 sm:px-3 sm:py-1.5 rounded-xl border border-brand-200 bg-white hover:bg-brand-50 text-slate-800 transition-all cursor-pointer shadow-2xs shrink-0"
               title={currentUser ? `Logged in: ${currentUser.name} (${currentUser.loginId || currentUser.email})` : 'Sign In / Account'}
             >
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-700 to-brand-900 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
+              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-700 to-brand-900 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs relative">
                 {currentUser?.name ? currentUser.name.charAt(0).toUpperCase() : <User className="w-3.5 h-3.5" />}
+                <span className={`absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full border-2 border-white ${currentUser ? 'bg-emerald-500' : 'bg-slate-300'}`}></span>
               </div>
-              <div className="flex flex-col text-left leading-tight">
+              <div className="hidden sm:flex flex-col text-left leading-tight">
                 <div className="flex items-center gap-1.5">
                   <span className="text-xs font-bold text-slate-900 whitespace-nowrap">
                     {currentUser ? currentUser.name : 'Sign In'}
                   </span>
                   {currentUser?.role && (
-                    <span className="hidden sm:inline-block text-[10px] font-semibold px-1.5 py-0.2 rounded bg-brand-50 text-brand-700 border border-brand-200 capitalize whitespace-nowrap">
+                    <span className="inline-block text-[10px] font-semibold px-1.5 py-0.2 rounded bg-brand-50 text-brand-700 border border-brand-200 capitalize whitespace-nowrap">
                       {currentUser.role.replace('_', ' ')}
                     </span>
                   )}
                 </div>
                 <span className="text-[10px] text-slate-500 font-mono flex items-center gap-1 whitespace-nowrap">
-                  <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${currentUser ? 'bg-emerald-500' : 'bg-slate-300'}`}></span>
                   <span>{currentUser ? (currentUser.loginId || currentUser.email) : 'Guest Account'}</span>
                 </span>
               </div>
-            </button>
-
-            {/* Profile Tab Shortcut */}
-            <button
-              onClick={() => setActiveTab('profile')}
-              className={`p-2 rounded-xl border transition-all cursor-pointer ${
-                activeTab === 'profile'
-                  ? 'bg-brand-50 border-brand-300 text-brand-700'
-                  : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
-              }`}
-              title={t('nav.profile')}
-            >
-              <User className="w-4 h-4" />
             </button>
 
             {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 cursor-pointer"
+              aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -379,10 +369,10 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Row 2: Main Navigation Tabs & Quick Showcase Scenario Ribbon */}
-      <div className="border-t border-slate-200/80 bg-slate-50/90 shadow-2xs">
+      {/* Row 2: Main Navigation Tabs & Showcase Ribbon (Desktop only to respect 15% Mobile Sticky Cap) */}
+      <div className="hidden lg:block border-t border-slate-200/80 bg-slate-50/90 shadow-2xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2 py-1.5 min-w-0">
+          <div className="flex items-center justify-between gap-2 h-11 min-w-0">
             
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-1 text-xs font-semibold text-slate-600 overflow-x-auto no-scrollbar py-0.5">

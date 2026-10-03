@@ -75,39 +75,39 @@ export const LandingOverview: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-8 sm:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12">
+          <span className="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-brand-200">
             Citizen-First Operating Philosophy
           </span>
-          <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="mt-2 sm:mt-3 text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             One place to understand government processes
           </h2>
-          <p className="mt-2 text-slate-600 text-sm sm:text-base">
-            Citizens should not need to understand the administrative structure of government in order to access public services.
+          <p className="mt-1 sm:mt-2 text-slate-600 text-xs sm:text-base leading-relaxed">
+            Citizens should not need to understand administrative bureaucracy to access public services.
           </p>
         </div>
 
         {/* 5 Core Pillars (Section 31) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3.5 mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2.5 sm:gap-3.5 mb-8 sm:mb-14">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
               <div 
                 key={idx}
-                className="p-5 rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-slate-300 transition-all hover:shadow-md flex flex-col justify-between"
+                className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-slate-300 transition-all hover:shadow-md flex flex-col justify-between"
               >
                 <div>
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 border ${pillar.color}`}>
-                    <Icon className="w-5 h-5" />
+                  <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3 border ${pillar.color}`}>
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
-                  <h3 className="font-bold text-slate-900 text-base mb-1.5">
+                  <h3 className="font-bold text-slate-900 text-sm sm:text-base mb-1 sm:mb-1.5">
                     {language === 'hi' ? pillar.titleHi : pillar.titleEn}
                   </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed">
                     {language === 'hi' ? pillar.descHi : pillar.descEn}
                   </p>
                 </div>
@@ -117,38 +117,38 @@ export const LandingOverview: React.FC = () => {
         </div>
 
         {/* The Fundamental Product Loop (Section 33) */}
-        <div className="bg-gradient-to-br from-brand-900 via-brand-950 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl overflow-hidden relative">
+        <div className="bg-gradient-to-br from-brand-900 via-brand-950 to-slate-900 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-10 shadow-xl overflow-hidden relative">
           <div className="absolute top-0 right-0 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-          <div className="max-w-2xl mb-8">
-            <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-saffron-500/20 text-saffron-300 text-xs font-semibold uppercase tracking-wider mb-2">
+          <div className="max-w-2xl mb-5 sm:mb-8">
+            <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-0.5 rounded-full bg-saffron-500/20 text-saffron-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-2">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Core Differentiator</span>
             </span>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            <h3 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
               The JanMitra Action Loop
             </h3>
-            <p className="mt-2 text-slate-300 text-sm leading-relaxed">
+            <p className="mt-1 sm:mt-2 text-slate-300 text-xs sm:text-sm leading-relaxed">
               We turn your real-life situation into an evidence-backed roadmap with zero guesswork.
             </p>
           </div>
 
           {/* Loop Stepper Horizontal / Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-2.5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8 gap-2 sm:gap-2.5">
             {loopSteps.map((st, idx) => (
               <div 
                 key={idx}
-                className="bg-white/5 border border-white/10 rounded-xl p-3 flex flex-col justify-between hover:bg-white/10 transition-colors relative group"
+                className="bg-white/5 border border-white/10 rounded-xl p-2.5 sm:p-3 flex flex-col justify-between hover:bg-white/10 transition-colors relative group"
               >
                 <div>
-                  <span className="text-[10px] font-mono font-bold text-saffron-400 block mb-1">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-bold text-saffron-400 block mb-0.5 sm:mb-1">
                     STEP {st.num}
                   </span>
-                  <h4 className="text-xs font-bold text-white group-hover:text-saffron-300 transition-colors leading-tight">
+                  <h4 className="text-[11px] sm:text-xs font-bold text-white group-hover:text-saffron-300 transition-colors leading-tight">
                     {language === 'hi' ? st.titleHi : st.titleEn}
                   </h4>
                 </div>
-                <p className="text-[10px] text-slate-400 mt-2 line-clamp-2">
+                <p className="text-[9px] sm:text-[10px] text-slate-400 mt-1.5 line-clamp-2">
                   {language === 'hi' ? st.descHi : st.descEn}
                 </p>
               </div>
@@ -156,14 +156,14 @@ export const LandingOverview: React.FC = () => {
           </div>
 
           {/* Bottom Loop Action */}
-          <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-xs text-slate-300">
+          <div className="mt-5 sm:mt-8 pt-4 sm:pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+            <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-slate-300">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>Every recommendation is pinned to verified gazettes and official department orders.</span>
             </div>
             <button
               onClick={() => setActiveTab('discover')}
-              className="px-5 py-2.5 rounded-xl bg-saffron-500 hover:bg-saffron-600 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-md transition-all cursor-pointer"
+              className="w-full sm:w-auto px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-saffron-500 hover:bg-saffron-600 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer min-h-[40px]"
             >
               <span>Start Discovery Now</span>
               <ArrowRight className="w-4 h-4" />
@@ -172,16 +172,16 @@ export const LandingOverview: React.FC = () => {
         </div>
 
         {/* Vakh Civic Chaupal Feature Callout */}
-        <div className="mt-14 bg-gradient-to-r from-emerald-950 via-teal-900 to-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-emerald-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="space-y-2 max-w-2xl">
+        <div className="mt-8 sm:mt-14 bg-gradient-to-r from-emerald-950 via-teal-900 to-slate-900 text-white rounded-2xl p-4 sm:p-8 shadow-xl border border-emerald-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6">
+          <div className="space-y-1.5 sm:space-y-2 max-w-2xl">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-xs uppercase tracking-wider border border-emerald-400/30">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-[10px] sm:text-xs uppercase tracking-wider border border-emerald-400/30">
                 <Radio className="w-3.5 h-3.5 animate-pulse text-emerald-400" />
                 New: Powered by Vakh.com
               </span>
-              <span className="text-xs text-emerald-200">Hyperlocal Community Feed</span>
+              <span className="text-[10px] sm:text-xs text-emerald-200">Hyperlocal Community Feed</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-black text-white">
+            <h3 className="text-lg sm:text-2xl font-black text-white">
               {language === 'hi' ? 'वख जन-चौपाल — जमीनी अपडेट एवं शिविर' : 'Vakh Civic Chaupal — Real-Time Ground Notices'}
             </h3>
             <p className="text-emerald-100/90 text-xs sm:text-sm leading-relaxed">
@@ -191,10 +191,10 @@ export const LandingOverview: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto shrink-0">
             <button
               onClick={() => setActiveTab('vakh')}
-              className="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl shadow-md transition cursor-pointer"
+              className="flex-1 sm:flex-initial px-4 sm:px-5 py-2 sm:py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl shadow-md transition cursor-pointer min-h-[40px]"
             >
               Open Vakh Chaupal
             </button>
@@ -202,7 +202,7 @@ export const LandingOverview: React.FC = () => {
               href="https://vakh.com/@samentha"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs rounded-xl border border-white/20 transition flex items-center gap-1.5"
+              className="px-3 sm:px-4 py-2 sm:py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs rounded-xl border border-white/20 transition flex items-center justify-center gap-1.5 min-h-[40px]"
             >
               <span>@samentha</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -211,13 +211,13 @@ export const LandingOverview: React.FC = () => {
         </div>
 
         {/* The 5 Questions JanMitra Answers (Section 32) */}
-        <div className="mt-14 bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8">
-          <div className="flex items-center gap-2 text-slate-900 font-bold text-base mb-4">
-            <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+        <div className="mt-8 sm:mt-14 bg-slate-50 border border-slate-200 rounded-2xl p-4 sm:p-8">
+          <div className="flex items-center gap-2 text-slate-900 font-bold text-sm sm:text-base mb-3 sm:mb-4">
+            <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 shrink-0" />
             <span>5 Core Questions JanMitra Answers for Every Citizen:</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2 sm:gap-3 text-xs">
             <div className="p-3.5 bg-white rounded-xl border border-slate-200 shadow-2xs">
               <span className="font-bold text-brand-700 block mb-1">1. Relevant Benefits</span>
               <span className="text-slate-600">What government benefits might be relevant to my situation?</span>

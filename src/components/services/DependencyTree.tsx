@@ -28,7 +28,7 @@ export const DependencyTree: React.FC<DependencyTreeProps> = ({
   dependencies,
   onResolveService
 }) => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   // Find the first pending dependency to offer as "Next Recommended Step"
   const pendingDep = dependencies.find(d => d.status !== 'satisfied');
@@ -40,14 +40,14 @@ export const DependencyTree: React.FC<DependencyTreeProps> = ({
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-2.5 py-0.5 rounded-full border border-brand-200">
-            Differentiator • Dependency Engine
+            {t('engine.dependency')}
           </span>
           <h3 className="text-lg font-bold text-slate-900 mt-1 flex items-center gap-2">
             <GitBranch className="w-5 h-5 text-brand-700" />
-            <span>Government Service Dependency Graph</span>
+            <span>{t('engine.dependency_title')}</span>
           </h3>
           <p className="text-xs text-slate-500 mt-0.5">
-            Understand how administrative documents link together before official application submission.
+            {t('engine.dependency_desc')}
           </p>
         </div>
 
@@ -55,10 +55,10 @@ export const DependencyTree: React.FC<DependencyTreeProps> = ({
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-center gap-3">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 block">
-                Next Recommended Step:
+                {t('engine.next_recommended')}
               </span>
               <span className="text-xs font-bold text-slate-900">
-                Obtain {pendingDep.name}
+                {language === 'hi' ? `${pendingDep.nameHi || pendingDep.name} बनवाएं / प्रस्तुत करें` : `Obtain ${pendingDep.name}`}
               </span>
             </div>
             <button
@@ -66,7 +66,7 @@ export const DependencyTree: React.FC<DependencyTreeProps> = ({
               onClick={() => onResolveService(pendingDep.serviceId!)}
               className="px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold flex items-center gap-1 shadow-xs cursor-pointer"
             >
-              <span>Resolve</span>
+              <span>{t('action.resolve')}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -110,7 +110,7 @@ export const DependencyTree: React.FC<DependencyTreeProps> = ({
                         {language === 'hi' && dep.nameHi ? dep.nameHi : dep.name}
                       </span>
                       <span className="text-[11px] text-slate-500 font-normal">
-                        {isSatisfied ? 'Available in locker' : 'Action required before scheme lock'}
+                        {isSatisfied ? t('engine.locker_satisfied') : t('engine.action_required_lock')}
                       </span>
                     </div>
                   </div>
@@ -121,7 +121,7 @@ export const DependencyTree: React.FC<DependencyTreeProps> = ({
                       onClick={() => onResolveService(dep.serviceId!)}
                       className="px-2.5 py-1 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700 font-semibold text-xs border border-brand-200 flex items-center gap-1 shrink-0 cursor-pointer"
                     >
-                      <span>Open Service</span>
+                      <span>{t('action.open_service')}</span>
                       <ArrowRight className="w-3 h-3" />
                     </button>
                   )}
@@ -133,9 +133,9 @@ export const DependencyTree: React.FC<DependencyTreeProps> = ({
 
       </div>
 
-      <div className="mt-4 flex items-center justify-between text-xs text-slate-500">
-        <span>✓ = Satisfied from your Document Locker</span>
-        <span>⚠ = Prerequisite that blocks final approval</span>
+      <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500">
+        <span>{t('engine.tree_legend_satisfied')}</span>
+        <span>{t('engine.tree_legend_blocked')}</span>
       </div>
 
     </div>

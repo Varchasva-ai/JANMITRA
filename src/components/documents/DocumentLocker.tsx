@@ -113,14 +113,14 @@ export const DocumentLocker: React.FC<{ onNavigateToService: (serviceId: string)
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
-            Document Intelligence
+            {t('docs.badge')}
           </span>
-          <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight mt-1 flex items-center gap-2">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight mt-1 flex items-center gap-2">
             <FolderCheck className="w-6 h-6 text-amber-600" />
-            <span>My Documents & Locker</span>
+            <span>{t('docs.heading')}</span>
           </h2>
           <p className="text-slate-500 text-xs sm:text-sm mt-0.5">
-            Organize personal credentials and run preliminary document readiness checks for public services.
+            {t('docs.subheading')}
           </p>
         </div>
 
@@ -128,10 +128,10 @@ export const DocumentLocker: React.FC<{ onNavigateToService: (serviceId: string)
         <button
           type="button"
           onClick={() => { setUploadSuccessDoc(null); setIsUploading(false); }}
-          className="px-4 py-2.5 rounded-xl bg-brand-700 hover:bg-brand-800 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer self-start sm:self-auto"
+          className="px-4 py-2.5 rounded-xl bg-brand-700 hover:bg-brand-800 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer self-start sm:self-auto min-h-[40px]"
         >
           <Upload className="w-4 h-4" />
-          <span>Upload Document (Scan)</span>
+          <span>{t('docs.upload_scan')}</span>
         </button>
       </div>
 
@@ -140,38 +140,38 @@ export const DocumentLocker: React.FC<{ onNavigateToService: (serviceId: string)
         <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
         <div className="space-y-1">
           <p className="font-semibold text-white">
-            Preliminary Document Check Notice:
+            {t('docs.guardrail_title')}
           </p>
           <p className="text-slate-300 leading-relaxed">
-            JanMitra performs non-authoritative structural and formatting checks. We never claim legal validation; official verification is completed exclusively by government issuing officers.
+            {t('docs.guardrail_text')}
           </p>
         </div>
       </div>
 
       {/* Section 14: Document-to-Service Matching Interactive Tool */}
-      <div className="bg-white rounded-3xl border-2 border-brand-200 p-6 shadow-sm">
+      <div className="bg-white rounded-3xl border-2 border-brand-200 p-4 sm:p-6 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <div>
             <span className="text-[11px] font-bold uppercase tracking-wider text-brand-700">
-              Automatic Matcher
+              {language === 'hi' ? 'स्वचालित मिलान' : 'Automatic Matcher'}
             </span>
             <h3 className="text-base font-bold text-slate-900">
-              Document-to-Service Readiness
+              {t('docs.matcher_title')}
             </h3>
             <p className="text-xs text-slate-500">
-              Select any program to automatically audit your document locker against its requirements.
+              {t('docs.matcher_sub')}
             </p>
           </div>
 
           <div className="flex items-center gap-2 min-w-0 max-w-full">
-            <label className="text-xs font-semibold text-slate-600 shrink-0">Audit for:</label>
+            <label className="text-xs font-semibold text-slate-600 shrink-0">{t('docs.audit_for')}</label>
             <select
               value={selectedSchemeForMatch}
               onChange={(e) => setSelectedSchemeForMatch(e.target.value)}
               className="px-3 py-1.5 rounded-xl border border-slate-300 bg-white text-xs font-semibold text-slate-800 focus:outline-hidden focus:border-brand-600 shadow-2xs w-full sm:w-auto max-w-[260px] sm:max-w-xs md:max-w-sm truncate"
             >
               {ALL_SCHEMES.map(s => (
-                <option key={s.id} value={s.id}>{s.name}</option>
+                <option key={s.id} value={s.id}>{language === 'hi' ? s.nameHi : s.name}</option>
               ))}
             </select>
           </div>
@@ -181,10 +181,12 @@ export const DocumentLocker: React.FC<{ onNavigateToService: (serviceId: string)
         <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <span className="text-xs font-bold text-slate-900 block">
-              {currentTargetScheme.name}
+              {language === 'hi' ? currentTargetScheme.nameHi : currentTargetScheme.name}
             </span>
             <span className="text-xs text-slate-500">
-              {availableCount} of {requiredCodes.length} mandatory documents ready in your locker.
+              {language === 'hi'
+                ? `लॉकर में ${availableCount} / ${requiredCodes.length} जरूरी कागज़ात तैयार हैं।`
+                : `${availableCount} of ${requiredCodes.length} mandatory documents ready in your locker.`}
             </span>
           </div>
 
@@ -192,12 +194,12 @@ export const DocumentLocker: React.FC<{ onNavigateToService: (serviceId: string)
             {missingCount > 0 ? (
               <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-bold text-xs flex items-center gap-1.5">
                 <AlertCircle className="w-3.5 h-3.5 text-amber-700" />
-                <span>{missingCount} document(s) still required</span>
+                <span>{language === 'hi' ? `${missingCount} कागज़ात अभी आवश्यक हैं` : `${missingCount} document(s) still required`}</span>
               </span>
             ) : (
               <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 font-bold text-xs flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
-                <span>All documents ready for submission</span>
+                <span>{t('docs.all_ready')}</span>
               </span>
             )}
           </div>
@@ -228,7 +230,7 @@ export const DocumentLocker: React.FC<{ onNavigateToService: (serviceId: string)
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
                       isAvail ? 'bg-emerald-100 text-emerald-800' : isExpired ? 'bg-amber-100 text-amber-800' : 'bg-slate-200 text-slate-700'
                     }`}>
-                      {isAvail ? '✓ Ready' : isExpired ? '⚠ Expired' : '○ Missing'}
+                      {isAvail ? (language === 'hi' ? '✓ तैयार' : '✓ Ready') : isExpired ? (language === 'hi' ? '⚠ समय समाप्त' : '⚠ Expired') : (language === 'hi' ? '○ बाकी' : '○ Missing')}
                     </span>
                   </div>
                 </div>
@@ -239,7 +241,7 @@ export const DocumentLocker: React.FC<{ onNavigateToService: (serviceId: string)
                     onClick={() => onNavigateToService(item.relatedServiceId!)}
                     className="mt-2 text-left text-[11px] font-semibold text-brand-700 hover:text-brand-900 flex items-center gap-1 cursor-pointer"
                   >
-                    <span>How do I obtain this?</span>
+                    <span>{t('docs.how_obtain')}</span>
                     <ArrowRight className="w-3 h-3" />
                   </button>
                 )}

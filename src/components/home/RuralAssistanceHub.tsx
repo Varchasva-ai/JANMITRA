@@ -136,26 +136,26 @@ export const RuralAssistanceHub: React.FC<RuralAssistanceHubProps> = ({ onSelect
     }
   ];
 
+  const [activeMobilePillar, setActiveMobilePillar] = useState(0);
+  const [showDocsMobile, setShowDocsMobile] = useState(false);
+
   return (
-    <div className="mt-10 mb-14 bg-gradient-to-br from-amber-50/50 via-white to-emerald-50/40 rounded-3xl border-2 border-amber-200/80 p-5 sm:p-8 shadow-lg shadow-amber-900/5">
+    <div className="mt-6 sm:mt-10 mb-8 sm:mb-14 bg-gradient-to-br from-amber-50/50 via-white to-emerald-50/40 rounded-2xl sm:rounded-3xl border-2 border-amber-200/80 p-3.5 sm:p-8 shadow-lg shadow-amber-900/5">
       
       {/* Top Banner with Gramin Saathi Motif */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-amber-100">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-6 border-b border-amber-100">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-saffron-100 text-saffron-900 border border-saffron-300 text-xs font-bold mb-2">
-            <span className="w-2 h-2 rounded-full bg-saffron-600 animate-pulse"></span>
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-saffron-100 text-saffron-900 border border-saffron-300 text-[11px] font-bold mb-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-saffron-600 animate-pulse"></span>
             <span>{language === 'hi' ? 'विशेष: ग्रामीण जन सुविधा केंद्र' : 'Special: Rural Citizen Convenience Hub'}</span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+          <h2 className="text-lg sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
             <span>{language === 'hi' ? 'सीधे काम की 4 बड़ी योजनाएं' : '4 Major Everyday Welfare Pillars'}</span>
-            <span className="text-sm font-normal text-slate-500 hidden sm:inline">
-              ({language === 'hi' ? 'आसान भाषा में समझें और सुनें' : 'Understand in plain words & listen aloud'})
-            </span>
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl">
+          <p className="text-xs sm:text-sm text-slate-600 mt-0.5 max-w-2xl leading-relaxed">
             {language === 'hi'
-              ? 'यदि फॉर्म भरने या पढ़ने में मुश्किल हो, तो किसी भी कार्ड पर 🔊 "सुनें" दबाएं। जनमित्र आपको बोलकर पूरी बात समझाएगा।'
-              : 'If reading or navigating government circulars is difficult, click 🔊 "Listen" on any card. JanMitra will speak aloud to guide you.'}
+              ? 'यदि पढ़ने में मुश्किल हो, तो किसी भी कार्ड पर 🔊 "सुनें" दबाएं। जनमित्र बोलकर पूरी बात समझाएगा।'
+              : 'Click 🔊 "Listen" on any card to hear eligibility and instructions spoken aloud in plain words.'}
           </p>
         </div>
 
@@ -167,7 +167,7 @@ export const RuralAssistanceHub: React.FC<RuralAssistanceHubProps> = ({ onSelect
             'नमस्कार! जनमित्र में आपका स्वागत है। यहां आप खेती, मुफ्त इलाज, पक्का मकान, और पेंशन जैसी योजनाओं की जानकारी आसान भाषा में सुन सकते हैं। नीचे दिए गए किसी भी कार्ड पर क्लिक करके पात्रता जांचें।',
             'Welcome to JanMitra. Here you can discover farming grants, free hospital treatments, housing subsidies, and monthly pensions in simple everyday words. Tap any card below to check your eligibility.'
           )}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm transition-all shadow-sm cursor-pointer shrink-0 ${
+          className={`flex items-center gap-1.5 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm transition-all shadow-sm cursor-pointer shrink-0 ${
             activeSpeechId === 'hub-intro'
               ? 'bg-rose-600 text-white ring-4 ring-rose-200 animate-pulse'
               : 'bg-brand-700 hover:bg-brand-800 text-white shadow-brand-700/20'
@@ -176,20 +176,40 @@ export const RuralAssistanceHub: React.FC<RuralAssistanceHubProps> = ({ onSelect
         >
           {activeSpeechId === 'hub-intro' ? (
             <>
-              <VolumeX className="w-4 h-4 animate-bounce" />
-              <span>{language === 'hi' ? 'आवाज़ रोकें ⏹' : 'Stop Audio ⏹'}</span>
+              <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-bounce" />
+              <span>{language === 'hi' ? 'रोकें ⏹' : 'Stop ⏹'}</span>
             </>
           ) : (
             <>
-              <Volume2 className="w-4 h-4" />
-              <span>{language === 'hi' ? 'पूरी जानकारी सुनें 🔊' : 'Listen Introduction 🔊'}</span>
+              <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span>{language === 'hi' ? 'बोलकर सुनें 🔊' : 'Listen Intro 🔊'}</span>
             </>
           )}
         </button>
       </div>
 
-      {/* 4 Big High-Contrast Touch Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+      {/* Mobile Swipe Notice */}
+      <div className="flex md:hidden items-center justify-between mt-3 text-[11px] text-slate-500 font-medium">
+        <span>Swipe to view all 4 pillars (← →)</span>
+        <div className="flex items-center gap-1">
+          {ruralPillars.map((_, i) => (
+            <span 
+              key={i} 
+              className={`w-1.5 h-1.5 rounded-full transition-all ${activeMobilePillar === i ? 'w-4 bg-brand-700' : 'bg-slate-300'}`} 
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* 4 Touch Cards: Horizontal Swipeable on Mobile, Grid on Desktop */}
+      <div 
+        onScroll={(e) => {
+          const el = e.currentTarget;
+          const index = Math.round(el.scrollLeft / (el.clientWidth * 0.8));
+          setActiveMobilePillar(Math.min(index, ruralPillars.length - 1));
+        }}
+        className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-3 sm:mt-6 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none no-scrollbar pb-2 md:pb-0"
+      >
         {ruralPillars.map((item) => {
           const Icon = item.icon;
           const isSpeaking = activeSpeechId === item.id;
@@ -197,12 +217,12 @@ export const RuralAssistanceHub: React.FC<RuralAssistanceHubProps> = ({ onSelect
           return (
             <div
               key={item.id}
-              className="bg-white rounded-2xl border-2 border-slate-200/90 p-5 shadow-xs hover:shadow-xl hover:border-brand-500 transition-all duration-200 flex flex-col justify-between group"
+              className="w-[84vw] max-w-[320px] shrink-0 snap-center md:w-auto bg-white rounded-2xl border-2 border-slate-200/90 p-4 sm:p-5 shadow-xs hover:shadow-xl hover:border-brand-500 transition-all duration-200 flex flex-col justify-between group"
             >
               <div>
                 {/* Benefit Pill & Audio Button */}
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="inline-block px-2.5 py-1 rounded-lg text-xs font-black bg-amber-100 text-amber-900 border border-amber-300">
+                <div className="flex items-center justify-between gap-2 mb-2 sm:mb-3">
+                  <span className="inline-block px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-[10px] sm:text-xs font-black bg-amber-100 text-amber-900 border border-amber-300">
                     {language === 'hi' ? item.badgeHi : item.badgeEn}
                   </span>
 
@@ -212,7 +232,7 @@ export const RuralAssistanceHub: React.FC<RuralAssistanceHubProps> = ({ onSelect
                       e.stopPropagation();
                       handleListen(item.id, item.speechHi, item.speechEn);
                     }}
-                    className={`p-2 rounded-xl border text-xs font-bold flex items-center gap-1 transition-all ${
+                    className={`p-1.5 sm:p-2 rounded-xl border text-xs font-bold flex items-center gap-1 transition-all ${
                       isSpeaking
                         ? 'bg-rose-500 text-white border-rose-600 shadow-md ring-2 ring-rose-200 animate-pulse'
                         : 'bg-slate-50 hover:bg-brand-50 border-slate-200 text-slate-700 hover:text-brand-800'
@@ -220,10 +240,10 @@ export const RuralAssistanceHub: React.FC<RuralAssistanceHubProps> = ({ onSelect
                     title={language === 'hi' ? 'बोलकर सुनें' : 'Listen aloud'}
                   >
                     {isSpeaking ? (
-                      <VolumeX className="w-4 h-4" />
+                      <VolumeX className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     ) : (
                       <>
-                        <Volume2 className="w-4 h-4 text-brand-700" />
+                        <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-700" />
                         <span className="text-[10px] hidden sm:inline">{language === 'hi' ? 'सुनें' : 'Listen'}</span>
                       </>
                     )}
@@ -231,18 +251,18 @@ export const RuralAssistanceHub: React.FC<RuralAssistanceHubProps> = ({ onSelect
                 </div>
 
                 {/* Card Icon & Title */}
-                <div className="flex items-center gap-3 mb-2.5">
-                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${item.color} shadow-md group-hover:scale-110 transition-transform`}>
-                    <Icon className="w-6 h-6" />
+                <div className="flex items-center gap-2.5 sm:gap-3 mb-2">
+                  <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center ${item.color} shadow-md group-hover:scale-110 transition-transform shrink-0`}>
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <div>
-                    <h3 className="font-extrabold text-base text-slate-900 group-hover:text-brand-800 transition-colors leading-tight">
+                    <h3 className="font-extrabold text-sm sm:text-base text-slate-900 group-hover:text-brand-800 transition-colors leading-tight">
                       {language === 'hi' ? item.titleHi : item.titleEn}
                     </h3>
                   </div>
                 </div>
 
-                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed mb-3 sm:mb-4 line-clamp-3">
                   {language === 'hi' ? item.descHi : item.descEn}
                 </p>
               </div>
@@ -251,7 +271,7 @@ export const RuralAssistanceHub: React.FC<RuralAssistanceHubProps> = ({ onSelect
               <button
                 type="button"
                 onClick={() => onSelectCategory(item.category)}
-                className="w-full mt-2 py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-brand-700 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-xs group-hover:shadow-md cursor-pointer"
+                className="w-full mt-2 py-2 sm:py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-brand-700 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-xs group-hover:shadow-md cursor-pointer min-h-[40px]"
               >
                 <span>{language === 'hi' ? 'पात्रता व योजना देखें' : 'Check Eligibility & Details'}</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -261,49 +281,58 @@ export const RuralAssistanceHub: React.FC<RuralAssistanceHubProps> = ({ onSelect
         })}
       </div>
 
-      {/* Village Documents Essential Guide (कागज़ात सहायता) */}
-      <div className="mt-8 pt-6 border-t border-amber-200/60 bg-amber-50/40 rounded-2xl p-4 sm:p-5">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
+      {/* Village Documents Essential Guide (кагज़ात सहायता - Collapsible on Mobile) */}
+      <div className="mt-5 sm:mt-8 pt-4 sm:pt-6 border-t border-amber-200/60 bg-amber-50/40 rounded-2xl p-3 sm:p-5">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3 mb-3">
           <div>
-            <h3 className="text-sm sm:text-base font-extrabold text-slate-900 flex items-center gap-2">
+            <h3 className="text-xs sm:text-base font-extrabold text-slate-900 flex items-center gap-2">
               <FileText className="w-4 h-4 text-brand-700" />
               <span>{language === 'hi' ? 'सरकारी लाभ पाने के लिए जरूरी 4 मुख्य कागज़ात' : '4 Must-Have Documents for Government Benefits'}</span>
             </h3>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
               {language === 'hi' 
-                ? '90% फॉर्म केवल इन कागज़ातों में कमी के कारण रुकते हैं। इन्हें अभी चेक करें:' 
-                : 'Most applications stall due to minor document mistakes. Ensure these 4 are in order:'}
+                ? 'कागज़ातों की कमी से आवेदन रुकता है। इन्हें अभी चेक करें:' 
+                : 'Most applications stall due to minor document mistakes. Ensure these 4 are ready:'}
             </p>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setActiveTab('documents')}
-            className="px-3 py-1.5 rounded-xl bg-white border border-slate-300 hover:border-brand-600 text-brand-800 text-xs font-bold transition-all shadow-2xs hover:shadow-xs cursor-pointer shrink-0"
-          >
-            {language === 'hi' ? 'मेरे सभी दस्तावेज जांचें ➔' : 'Check My Document Vault ➔'}
-          </button>
+          <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
+            <button
+              type="button"
+              onClick={() => setShowDocsMobile(!showDocsMobile)}
+              className="sm:hidden px-2.5 py-1 rounded-lg bg-white border border-slate-300 text-slate-700 text-[11px] font-semibold"
+            >
+              {showDocsMobile ? 'Hide Details ▲' : 'Show 4 Docs ▼'}
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('documents')}
+              className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl bg-white border border-slate-300 hover:border-brand-600 text-brand-800 text-[11px] sm:text-xs font-bold transition-all shadow-2xs hover:shadow-xs cursor-pointer shrink-0"
+            >
+              {language === 'hi' ? 'दस्तावेज जांचें ➔' : 'Document Vault ➔'}
+            </button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className={`grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 ${showDocsMobile ? 'grid' : 'hidden sm:grid'}`}>
           {essentialDocuments.map((doc, idx) => (
             <div 
               key={idx} 
-              className="bg-white rounded-xl p-3 border border-slate-200 shadow-2xs flex flex-col justify-between"
+              className="bg-white rounded-xl p-2.5 sm:p-3 border border-slate-200 shadow-2xs flex flex-col justify-between"
             >
               <div>
-                <span className="text-xs font-extrabold text-slate-900 block mb-1">
+                <span className="text-[11px] sm:text-xs font-extrabold text-slate-900 block mb-0.5">
                   {language === 'hi' ? doc.nameHi : doc.nameEn}
                 </span>
-                <p className="text-[11px] text-slate-500 leading-normal">
+                <p className="text-[10px] sm:text-[11px] text-slate-500 leading-tight line-clamp-2">
                   {language === 'hi' ? doc.tipHi : doc.tipEn}
                 </p>
               </div>
 
-              <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between">
-                <span className="inline-flex items-center gap-1 text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
-                  <Check className="w-3 h-3 text-emerald-600" />
-                  <span>{language === 'hi' ? 'तैयार रखें' : 'Keep Ready'}</span>
+              <div className="mt-2 pt-1.5 border-t border-slate-100 flex items-center justify-between">
+                <span className="inline-flex items-center gap-0.5 text-[9px] sm:text-[10px] text-emerald-700 font-bold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
+                  <Check className="w-2.5 h-2.5 text-emerald-600" />
+                  <span>{language === 'hi' ? 'तैयार रखें' : 'Ready'}</span>
                 </span>
 
                 {doc.serviceId ? (
@@ -313,17 +342,17 @@ export const RuralAssistanceHub: React.FC<RuralAssistanceHubProps> = ({ onSelect
                       setSelectedServiceId(doc.serviceId!);
                       setActiveTab('services');
                     }}
-                    className="text-[10px] font-bold text-brand-700 hover:text-brand-900 underline underline-offset-2"
+                    className="text-[9px] sm:text-[10px] font-bold text-brand-700 hover:text-brand-900 underline"
                   >
-                    {language === 'hi' ? 'बनवाने का तरीका' : 'How to obtain'}
+                    {language === 'hi' ? 'तरीका' : 'Obtain'}
                   </button>
                 ) : (
                   <button
                     type="button"
                     onClick={() => setActiveTab('documents')}
-                    className="text-[10px] font-bold text-brand-700 hover:text-brand-900 underline underline-offset-2"
+                    className="text-[9px] sm:text-[10px] font-bold text-brand-700 hover:text-brand-900 underline"
                   >
-                    {language === 'hi' ? 'लॉकर में देखें' : 'View in locker'}
+                    {language === 'hi' ? 'लॉकर' : 'Locker'}
                   </button>
                 )}
               </div>

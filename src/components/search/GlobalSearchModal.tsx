@@ -65,9 +65,9 @@ export const GlobalSearchModal: React.FC = () => {
   const modalContent = (
     <div 
       onClick={(e) => { if (e.target === e.currentTarget) setIsSearchOpen(false); }}
-      className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 bg-slate-900/60 backdrop-blur-xs p-4 animate-in fade-in"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-3 sm:pt-20 bg-slate-900/60 backdrop-blur-xs p-2.5 sm:p-4 animate-in fade-in"
     >
-      <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[80vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200">
+      <div className="bg-white rounded-2xl sm:rounded-3xl max-w-2xl w-full max-h-[88vh] sm:max-h-[80vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200">
         
         {/* Search Input Bar */}
         <div className="p-4 border-b border-slate-200 flex items-center gap-3">

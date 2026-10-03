@@ -61,7 +61,7 @@ export const DiscoverView: React.FC<{ onNavigateToService: (serviceId: string) =
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-brand-700 bg-brand-50 px-2.5 py-0.5 rounded-full border border-brand-200">
-            Eligibility Engine
+            {t('engine.eligibility')}
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1 flex items-center gap-2">
             <Compass className="w-7 h-7 text-brand-700" />
@@ -78,7 +78,11 @@ export const DiscoverView: React.FC<{ onNavigateToService: (serviceId: string) =
           className="px-4 py-2.5 rounded-xl border border-slate-300 hover:border-brand-500 bg-white text-slate-800 text-xs font-semibold flex items-center gap-2 shadow-2xs transition-colors cursor-pointer self-start sm:self-auto"
         >
           <HelpCircle className="w-4 h-4 text-brand-700" />
-          <span>{showImNotSure ? 'Close Guided Flow' : "I'm Not Sure — Guide Me"}</span>
+          <span>
+            {showImNotSure 
+              ? (language === 'hi' ? 'मार्गदर्शन बंद करें' : 'Close Guided Flow') 
+              : (language === 'hi' ? 'मार्गदर्शन चाहिए — मेरी मदद करें' : "I'm Not Sure — Guide Me")}
+          </span>
         </button>
       </div>
 
@@ -96,13 +100,13 @@ export const DiscoverView: React.FC<{ onNavigateToService: (serviceId: string) =
             </div>
             <div>
               <span className="text-[10px] font-bold uppercase tracking-wider text-brand-800 block">
-                Progressive Questioning (1 Missing Parameter)
+                {language === 'hi' ? 'प्रगतिशील प्रश्न (1 अतिरिक्त जानकारी)' : 'Progressive Questioning (1 Missing Parameter)'}
               </span>
               <h4 className="text-xs sm:text-sm font-bold text-slate-900">
-                What type of college or university are you enrolled in?
+                {language === 'hi' ? 'आप किस प्रकार के कॉलेज या विश्वविद्यालय में नामांकित हैं?' : 'What type of college or university are you enrolled in?'}
               </h4>
               <p className="text-xs text-slate-500 mt-0.5">
-                UP Scholarship requires checking if the college master data is active on the portal.
+                {language === 'hi' ? 'यूपी छात्रवृत्ति पोर्टल पर संस्थान का मास्टर डेटा सत्यापित करने के लिए यह आवश्यक है।' : 'UP Scholarship requires checking if the college master data is active on the portal.'}
               </p>
             </div>
           </div>
@@ -115,7 +119,7 @@ export const DiscoverView: React.FC<{ onNavigateToService: (serviceId: string) =
               }}
               className="px-3 py-1.5 rounded-xl bg-white border border-brand-300 hover:bg-brand-50 text-brand-900 text-xs font-semibold shadow-2xs"
             >
-              Government
+              {language === 'hi' ? 'सरकारी (Govt)' : 'Government'}
             </button>
             <button
               onClick={() => {
@@ -124,7 +128,7 @@ export const DiscoverView: React.FC<{ onNavigateToService: (serviceId: string) =
               }}
               className="px-3 py-1.5 rounded-xl bg-white border border-brand-300 hover:bg-brand-50 text-brand-900 text-xs font-semibold shadow-2xs"
             >
-              Government-Aided
+              {language === 'hi' ? 'शासकीय सहायता प्राप्त (Aided)' : 'Government-Aided'}
             </button>
             <button
               onClick={() => {
@@ -133,7 +137,7 @@ export const DiscoverView: React.FC<{ onNavigateToService: (serviceId: string) =
               }}
               className="px-3 py-1.5 rounded-xl bg-white border border-brand-300 hover:bg-brand-50 text-brand-900 text-xs font-semibold shadow-2xs"
             >
-              Private Recognized
+              {language === 'hi' ? 'निजी मान्यता प्राप्त (Private)' : 'Private Recognized'}
             </button>
           </div>
         </div>

@@ -84,19 +84,19 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }
         {/* Essential Quick Facts Bar */}
         <div className="mt-6 pt-5 border-t border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
           <div>
-            <span className="text-slate-400 block mb-0.5 font-medium">Official Portal Fee:</span>
+            <span className="text-slate-400 block mb-0.5 font-medium">{language === 'hi' ? 'आधिकारिक पोर्टल शुल्क:' : 'Official Portal Fee:'}</span>
             <span className="text-white font-bold">{language === 'hi' ? service.feesHi : service.fees}</span>
           </div>
           <div>
-            <span className="text-slate-400 block mb-0.5 font-medium">Processing SLA:</span>
+            <span className="text-slate-400 block mb-0.5 font-medium">{language === 'hi' ? 'प्रक्रिया समय (SLA):' : 'Processing SLA:'}</span>
             <span className="text-white font-bold">{language === 'hi' ? service.processingTimeHi : service.processingTime}</span>
           </div>
           <div>
-            <span className="text-slate-400 block mb-0.5 font-medium">Assisted Offline Option:</span>
+            <span className="text-slate-400 block mb-0.5 font-medium">{language === 'hi' ? 'ऑफ़लाइन विकल्प (CSC / तहसील):' : 'Assisted Offline Option:'}</span>
             <span className="text-white font-bold">{language === 'hi' ? service.offlineOptionHi : service.offlineOption}</span>
           </div>
           <div>
-            <span className="text-slate-400 block mb-0.5 font-medium">Official Portal:</span>
+            <span className="text-slate-400 block mb-0.5 font-medium">{language === 'hi' ? 'आधिकारिक पोर्टल:' : 'Official Portal:'}</span>
             <a 
               href={service.officialPortal.url} 
               target="_blank" 
@@ -115,7 +115,7 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }
         {/* Section 10: "What is this?" */}
         <div>
           <h2 className="text-sm font-bold uppercase tracking-wider text-slate-400 mb-2">
-            What is this?
+            {t('services.what_is_this')}
           </h2>
           <p className="text-slate-800 text-base leading-relaxed bg-slate-50 p-4 rounded-2xl border border-slate-200">
             {language === 'hi' ? service.shortDescriptionHi : service.shortDescription}
@@ -126,10 +126,10 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }
         <div>
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-sm font-bold uppercase tracking-wider text-slate-400">
-              What you need (Document Requirements)
+              {t('services.what_you_need')}
             </h2>
             <span className="text-xs text-slate-500">
-              Matched against your Document Locker
+              {t('services.matched_against_locker')}
             </span>
           </div>
 
@@ -162,11 +162,11 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }
                           {userDoc?.name || code}
                         </span>
                         <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 font-semibold uppercase">
-                          Mandatory
+                          {t('services.mandatory')}
                         </span>
                       </div>
                       <p className="text-xs text-slate-500 mt-0.5">
-                        {userDoc?.description || 'Mandatory administrative proof required for verification.'}
+                        {userDoc?.description || (language === 'hi' ? 'सत्यापन के लिए अनिवार्य सरकारी प्रमाण पत्र।' : 'Mandatory administrative proof required for verification.')}
                       </p>
                     </div>
                   </div>
@@ -179,7 +179,7 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }
                         ? 'bg-amber-100 text-amber-800' 
                         : 'bg-slate-100 text-slate-700'
                     }`}>
-                      {isAvailable ? '✓ Available' : isExpired ? '⚠ Expired' : '○ Missing'}
+                      {isAvailable ? (language === 'hi' ? '✓ उपलब्ध' : '✓ Available') : isExpired ? (language === 'hi' ? '⚠ समय समाप्त' : '⚠ Expired') : (language === 'hi' ? '○ बाकी' : '○ Missing')}
                     </span>
                   </div>
                 </div>
@@ -191,7 +191,7 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }
         {/* Section 11: Step-by-Step Procedure Timeline */}
         <div>
           <h2 className="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">
-            Step-by-Step Official Procedure
+            {t('services.procedure')}
           </h2>
 
           <div className="space-y-4 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-slate-200">
@@ -206,7 +206,7 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }
                       {language === 'hi' ? st.titleHi : st.title}
                     </h3>
                     <span className="text-[11px] font-medium text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
-                      Where: {language === 'hi' ? st.whereToGoHi : st.whereToGo}
+                      {language === 'hi' ? 'कहाँ जाएं:' : 'Where:'} {language === 'hi' ? st.whereToGoHi : st.whereToGo}
                     </span>
                   </div>
 
@@ -215,7 +215,7 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({ service, onClose }
                   </p>
 
                   <div className="text-[11px] text-emerald-800 bg-emerald-50/70 p-2.5 rounded-xl border border-emerald-200/60">
-                    ➡️ <strong>What happens afterward:</strong> {language === 'hi' ? st.nextConsequenceHi : st.nextConsequence}
+                    ➡️ <strong>{language === 'hi' ? 'इसके बाद क्या होगा:' : 'What happens afterward:'}</strong> {language === 'hi' ? st.nextConsequenceHi : st.nextConsequence}
                   </div>
                 </div>
               </div>
