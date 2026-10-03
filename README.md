@@ -1,4 +1,4 @@
-# JanMitra (जनमित्र)
+# JanMitra (जनमित्र) 
 
 > **“Understand. Discover. Apply.”**
 > 
@@ -9,7 +9,7 @@
 [![Vite](https://img.shields.io/badge/Vite-6.x-purple.svg)](https://vitejs.dev/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-teal.svg)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-
+by team - Ionic
 ---
 
 ## 🏛️ Core Product Philosophy
