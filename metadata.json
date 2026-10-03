@@ -1,0 +1,8 @@
+{
+  "name": "JanMitra",
+  "description": "Citizen-First Benefits & Services Navigator for Indian Welfare Schemes",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
